@@ -16,8 +16,15 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/nxtreaming/stringutil"
+)
 
 func main() {
+	//	i := 100
+	//	fmt.Println("The value:", i)
 	fmt.Println("Hello world.")
+	fmt.Println((stringutil.Reverse(".dlrow olleH")))
 }
