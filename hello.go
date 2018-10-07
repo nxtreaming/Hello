@@ -14,6 +14,10 @@
 // ---------------------------------
 //
 
+//
+// 'package name' MUST be the first statement
+// Executable commands must always use 'package main'.
+//
 package main
 
 import (
