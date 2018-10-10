@@ -58,10 +58,24 @@ func string_swap2(str1, str2 string) (s1, s2 string) {
 	return
 }
 
+//global var: default false(0)
+var c, python, java bool
+
 func main() {
 	x := 100
 	y := 200
 	z := my_add(x, y)
+
+	//
+	// variables MUST be initialized
+	//a, b int;
+	//
+
+	var a, b int
+	a = 1
+	//b = 2
+
+	fmt.Println(a, b, c, python, java)
 
 	str1, str2 := string_swap("me", "Exchange")
 	str_a, str_b := string_swap2("github.com", "gitlab.com")
