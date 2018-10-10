@@ -45,16 +45,32 @@ func string_swap(str1, str2 string) (string, string) {
 	return str2, str1
 }
 
+// return named-values;
+func string_swap2(str1, str2 string) (s1, s2 string) {
+	//
+	// the implict defintion in the function context
+	// so we can not redefine them as by 's1 :=' and 's1 :='
+	//
+	s1 = fmt.Sprintf("Original string is: %s, %s", str1, str2)
+	s2 = fmt.Sprintf("Exchanged string is: %s, %s", str2, str1)
+
+	// MUST be empty
+	return
+}
+
 func main() {
 	x := 100
 	y := 200
-	str1, str2 := string_swap("me", "Exchange")
-
 	z := my_add(x, y)
+
+	str1, str2 := string_swap("me", "Exchange")
+	str_a, str_b := string_swap2("github.com", "gitlab.com")
 
 	fmt.Println("The Pi value:", math.Pi)
 	fmt.Println("the sum of is:", z)
 	fmt.Println(str1, str2)
+	fmt.Println(str_a)
+	fmt.Println(str_b)
 	fmt.Println("Hello world.")
 	fmt.Println((stringutil.Reverse(".dlrow olleH")))
 }
