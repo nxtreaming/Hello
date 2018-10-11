@@ -23,6 +23,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"math/cmplx"
 
 	"github.com/nxtreaming/stringutil"
 )
@@ -60,6 +61,36 @@ func string_swap2(str1, str2 string) (s1, s2 string) {
 
 //global var: default false(0)
 var c, python, java bool
+
+func basic_type_test() int {
+	//
+	// basic types:
+	// -------------------
+	// bool
+	// string
+	// int int8 int16 int32 int64
+	// uint uint8 uint16 uint32 uint64 uintptr
+	// byte ---> alias of uint8
+	// rune ---> alias of int32
+	//      ---> uniode code point
+	// float32 float64
+	// complex64 complex128
+	//
+
+	var (
+		ToBe   bool       = false
+		MaxInt uint64     = 1<<64 - 1
+		z      complex128 = cmplx.Sqrt(-10 + 12i)
+	)
+
+	fmt.Println("-----Basic Type demo-----")
+
+	fmt.Printf("Type: %T Value: %v\n", ToBe, ToBe)
+	fmt.Printf("Type: %T Value: %v\n", MaxInt, MaxInt)
+	fmt.Printf("Type: %T Value: %v\n", z, z)
+
+	return 0
+}
 
 func main() {
 	//
@@ -105,4 +136,6 @@ func main() {
 	fmt.Println(str_b)
 	fmt.Println("Hello world.")
 	fmt.Println((stringutil.Reverse(".dlrow olleH")))
+
+	basic_type_test()
 }
