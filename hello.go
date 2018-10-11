@@ -62,8 +62,13 @@ func string_swap2(str1, str2 string) (s1, s2 string) {
 var c, python, java bool
 
 func main() {
+	//
+	// := is the simple version of : var x int = 100
+	// only available in the local context of a function
+	//
 	x := 100
 	y := 200
+
 	z := my_add(x, y)
 
 	//
@@ -71,9 +76,22 @@ func main() {
 	//a, b int;
 	//
 
+	// b is 0 by default
 	var a, b int
 	a = 1
 	//b = 2
+
+	// var is ignored, because the default value declares the type
+	int_a, float_b, string_c := 3, 3.14, " Pi"
+
+	fmt.Print(int_a, float_b, string_c, "\n")
+
+	//
+	// if the variable has explict default value,
+	// we can ignore the variable's type
+	//
+	var answer = "No!"
+	fmt.Println("The answer is", answer)
 
 	fmt.Println(a, b, c, python, java)
 
