@@ -92,6 +92,19 @@ func basic_type_test() int {
 	return 0
 }
 
+func type_cast_test() int {
+	i := 100
+	// the type cast MUST be explictly
+	var f float64 = float64(i*100) * 10.1
+
+	//  cannot use i (type int) as type float32 in assignment
+	//var x float32 = i
+
+	fmt.Printf("the int is %v, the float64 is %v\n", i, f)
+
+	return 0
+}
+
 func main() {
 	//
 	// := is the simple version of : var x int = 100
@@ -138,4 +151,5 @@ func main() {
 	fmt.Println((stringutil.Reverse(".dlrow olleH")))
 
 	basic_type_test()
+	type_cast_test()
 }
