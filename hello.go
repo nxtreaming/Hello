@@ -82,12 +82,21 @@ func basic_type_test() int {
 		MaxInt uint64     = 1<<64 - 1
 		z      complex128 = cmplx.Sqrt(-10 + 12i)
 	)
+	// default is int
+	char := 'C'
+	var c uint8 = 'C'
+	var char2 string = "C"
 
 	fmt.Println("-----Basic Type demo-----")
 
 	fmt.Printf("Type: %T Value: %v\n", ToBe, ToBe)
 	fmt.Printf("Type: %T Value: %v\n", MaxInt, MaxInt)
 	fmt.Printf("Type: %T Value: %v\n", z, z)
+	fmt.Printf("Type: %T Value: %v\n", char, char)
+	fmt.Printf("Type: %T Value: %v\n", c, c)
+	fmt.Printf("Type: %T Value: %v\n", char2, char2)
+
+	fmt.Println("-----End Type demo-----")
 
 	return 0
 }
@@ -105,7 +114,33 @@ func type_cast_test() int {
 	return 0
 }
 
+const Pi = 3.1415926
+
+//
+// := is prohibited strictly in const
+//missing value in const declaration
+//syntax error: unexpected := after top level declaration
+//
+//const Pi2 := 3.1415926
+
+const (
+	Big   = 1 << 100
+	Small = Big >> 99
+)
+
+func needInt(x int) int {
+	return x*10 + 1
+}
+
+func needFloat(x float64) float64 {
+	return x * 0.1
+}
+
 func main() {
+	const slogan = "Coding For a Better World!"
+
+	fmt.Printf("The Pi is %v\n", Pi)
+	fmt.Printf("%s\n", slogan)
 	//
 	// := is the simple version of : var x int = 100
 	// only available in the local context of a function
@@ -152,4 +187,10 @@ func main() {
 
 	basic_type_test()
 	type_cast_test()
+
+	fmt.Println(needInt(Small))
+	fmt.Println(needFloat(Small))
+	// constant 1267650600228229401496703205376 overflows int
+	//fmt.Println(needInt(Big))
+	fmt.Println(needFloat(Big))
 }
