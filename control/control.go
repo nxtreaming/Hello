@@ -2,8 +2,14 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
+//
+// there is no '(' and ')' in 'for' or 'if'
+// but MUST have '{' and '}' even if the
+// statement has only one line
+//
 func sum(v int) int {
 	s := 0
 	for i := 1; i <= v; i++ {
@@ -31,8 +37,31 @@ func sum3(v int) int {
 		s += i
 		i++
 	}
+	//	for {
+	//		//infinite loop
+	//	}
 
 	return s
+}
+
+func sqrt(x float64) string {
+	if x < 0 {
+		return sqrt(-x) + "i"
+	}
+	return fmt.Sprint(math.Sqrt(x))
+}
+
+func pow(x, n, lim float64) float64 {
+	// simple calculation is allowed in 'if' statement
+	if v := math.Pow(x, n); v < lim {
+		return v
+	} else {
+		fmt.Printf("%g >= %g\n", v, lim)
+	}
+	//undefined 'v': out of the scope of v
+	//v += 1
+
+	return lim
 }
 
 func main() {
@@ -40,4 +69,9 @@ func main() {
 	fmt.Printf("The sum of from 1 to %d is %d\n", x, sum(x))
 	fmt.Printf("The sum of from 1 to %d is %d\n", x, sum2(x))
 	fmt.Printf("The sum of from 1 to %d is %d\n", x, sum3(x))
+
+	fmt.Printf("The value is %s, %s\n", sqrt(4), sqrt(-4))
+
+	fmt.Printf("The limit power: limit %v, %v^%v = %v\n", 10, 3, 2, pow(3, 2, 10))
+	fmt.Printf("The limit power: limit %v, %v^%v = %v\n", 20, 3, 3, pow(3, 3, 20))
 }
